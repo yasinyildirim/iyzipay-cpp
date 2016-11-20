@@ -17,6 +17,6 @@ QString HashGenerator::generateHash(const QString& apiKey, const QString& secret
     cryptoHash.addData(input.toUtf8());
     result = cryptoHash.result();
 
-    QString strResult(result.toBase64().data());
+    QString strResult(result.toBase64());
     return strResult;
 }

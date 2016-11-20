@@ -80,7 +80,8 @@ void IyzipayResource::setConversationId(const QString& conversationId) {
 QMap<QString, QString> IyzipayResource::getHttpHeaders(Request* request, Options* options) {
     QMap<QString, QString> headers;
 
-    QString randomString = QString::number(QTime::currentTime().msec()) + RandomStringUtility::GetRandomString(RANDOM_STRING_SIZE);
+    QString randomString = QString::number(QDateTime::currentMSecsSinceEpoch());
+    randomString.append(RandomStringUtility::GetRandomString(RANDOM_STRING_SIZE));
     headers.insert(RANDOM_HEADER_NAME, randomString);
     headers.insert(AUTHORIZATION, IyzipayResource::prepareAuthorizationString(request, randomString, options));
 

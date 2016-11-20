@@ -11,9 +11,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->binRequestButton, SIGNAL(clicked()), this, SLOT(onBinNumberRequested()));
     //set parent (owner) of options to "this" class
     options = new Options(this);
-    options->setApiKey("Your Api Key");
+    options->setApiKey("your api key");
     options->setBaseUrl("https://sandbox-api.iyzipay.com");
-    options->setSecretKey("Your Api Secret");
+    options->setSecretKey("your secret key");
+    QByteArray apiscret = options->getSecretKey().toAscii();
+    qDebug() <<"api_secert =" <<apiscret;
 
 
 }
@@ -29,7 +31,9 @@ void MainWindow::onBinNumberRequested(){
     RetrieveBinNumberRequest retrieveBinNumberRequest;
 
     retrieveBinNumberRequest.setBinNumber(binCode);
+    retrieveBinNumberRequest.setConversationId("12345678");
      binNumber = new BinNumber(this);
+
     connect(binNumber, SIGNAL(responseReady(QString)), this, SLOT(getResponse(QString)));
     QNetworkReply *response = binNumber->retrieve(&retrieveBinNumberRequest,options );
 

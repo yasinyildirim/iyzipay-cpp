@@ -7,14 +7,14 @@ You can sign up for an iyzico account at https://iyzico.com
 
 ##2. Dependencies
 
- - Qt 4.8 or greater
+ - Qt (core, gui and network modules) 4.8 or greater
  - qmake
  - GNU g++ compiler
  - QJson 0.7 (libqjson 0.7.1 package on ubuntu) or greater
 
 ##3. Installation
 
-Firstly create build directory and cd into it:
+Firstly, create a build directory and cd into it:
 ```
    mkdir build
    cd build
