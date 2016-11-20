@@ -19,7 +19,7 @@
 #include <QSslConfiguration>
 #include <QSsl>
 #include "request.h"
-
+#include <QFile>
 
 class HttpClient : public QObject
 {
@@ -37,9 +37,6 @@ public:
 
     QNetworkReply* post(const QString& urlStr, QMap<QString, QString> headers, Request* requestObject ){
         QNetworkRequest request;
-        QSslConfiguration conf = request.sslConfiguration();
-        conf.setPeerVerifyMode(QSslSocket::VerifyNone);
-        request.setSslConfiguration(conf);
         this->prepareHeaders(headers, &request);
         QByteArray body_content;
         this->prepareRequestBody(HttpMethod::POST, body_content, requestObject);

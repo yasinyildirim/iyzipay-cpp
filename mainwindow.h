@@ -22,6 +22,9 @@ signals:
 public slots:
     void onBinNumberRequested();
     void getResponse(QString);
+    void slotError(QNetworkReply::NetworkError);
+    void slotSslErrors(QList<QSslError>);
+
 private:
     Ui::MainWindow *ui;
     Options* options;

@@ -11,10 +11,25 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->binRequestButton, SIGNAL(clicked()), this, SLOT(onBinNumberRequested()));
     //set parent (owner) of options to "this" class
     options = new Options(this);
+
     options->setApiKey("your api key");
     options->setBaseUrl("https://sandbox-api.iyzipay.com");
     options->setSecretKey("your api secret");
 
+    QSslConfiguration conf =QSslConfiguration::defaultConfiguration();
+    conf.setProtocol(QSsl::SecureProtocols);
+    QList<QSslCertificate> certifs = conf.caCertificates();
+
+    //Caution! arrange path of certificates properly!
+    //Otherwise "Sssl handshake failed" error might be thrown.
+    QList<QSslCertificate> cert1 = QSslCertificate::fromPath("Certificates/iyzipay.crt");
+    QList<QSslCertificate> cert2 = QSslCertificate::fromPath("Certificates/GeoTrustGlobalCA.crt");
+    QList<QSslCertificate> cert3 = QSslCertificate::fromPath("Certificates/RapidSSLSHA256CA.crt");
+    certifs.append(cert1);
+    certifs.append(cert2);
+    certifs.append(cert3);
+    conf.setCaCertificates(certifs);
+    QSslConfiguration::setDefaultConfiguration(conf);
 
 }
 
@@ -36,15 +51,25 @@ void MainWindow::onBinNumberRequested(){
     QNetworkReply *response = binNumber->retrieve(&retrieveBinNumberRequest,options );
 
 
-    /*
+
     connect(response, SIGNAL(error(QNetworkReply::NetworkError)),
             this, SLOT(slotError(QNetworkReply::NetworkError)));
     connect(response, SIGNAL(sslErrors(QList<QSslError>)),
             this, SLOT(slotSslErrors(QList<QSslError>)));
-            */
+
 }
 
 void MainWindow::getResponse(QString response){
     ui->jsonResultBrowser->setText(response);
     binNumber->deleteLater();
+}
+
+void MainWindow::slotError(QNetworkReply::NetworkError error){
+    qDebug() <<"error no: "<<error;
+}
+
+void MainWindow::slotSslErrors(QList<QSslError> errors){
+    for(int i=0; i<errors.size(); i++){
+        qDebug() <<errors.at(i).errorString();
+    }
 }
