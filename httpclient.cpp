@@ -16,6 +16,7 @@ void HttpClient::prepareHeaders(QMap<QString, QString> headers, QNetworkRequest*
     for (QMap<QString, QString>::iterator header = headers.begin(); header !=  headers.end(); ++header) {
 
         netRequest->setRawHeader(header.key().toAscii(), header.value().toAscii());
+
     }
 
     netRequest->setRawHeader(CONTENT_TYPE.toAscii(), APPLICATION_JSON.toAscii());

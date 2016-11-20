@@ -83,6 +83,7 @@ QMap<QString, QString> IyzipayResource::getHttpHeaders(Request* request, Options
     QString randomString = QString::number(QDateTime::currentMSecsSinceEpoch());
     randomString.append(RandomStringUtility::GetRandomString(RANDOM_STRING_SIZE));
     headers.insert(RANDOM_HEADER_NAME, randomString);
+
     headers.insert(AUTHORIZATION, IyzipayResource::prepareAuthorizationString(request, randomString, options));
 
     if (!CLIENT_VERSION.isEmpty() && !CLIENT_TITLE.isEmpty()) {
@@ -94,6 +95,7 @@ QMap<QString, QString> IyzipayResource::getHttpHeaders(Request* request, Options
 QString IyzipayResource::prepareAuthorizationString(Request *request, const QString& randomString, Options* options) {
     QString hash = HashGenerator::generateHash(options->getApiKey(), options->getSecretKey(), randomString, request);
     QString result (IYZIWS_HEADER_NAME + options->getApiKey() + COLON + hash);
+
     return result;
 }
 
@@ -118,7 +120,8 @@ QByteArray IyzipayResource::toJsonData(){
      QNetworkReply::NetworkError error_type = reply->error();
      QString response;
      if (error_type == QNetworkReply::NoError) {
-         response = reply->readAll();
+         response = QString::fromUtf8(reply->readAll());
+
      }
      else {
          response = reply->errorString();

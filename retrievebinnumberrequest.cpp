@@ -21,7 +21,11 @@ QByteArray RetrieveBinNumberRequest::toJsonData(){
 
  QString RetrieveBinNumberRequest::toString(){
 
-     QString str =  this->toJsonData();
+     //be careful! string conversion format is very strict!
+     //TODO: implement generic string conversion as in the QJson
+     QString str =  "[locale="+ this->locale+
+             ",conversationId="+ this->conversationId +
+             ",binNumber="+ this->m_binNumber +"]";
      return str;
 
 }

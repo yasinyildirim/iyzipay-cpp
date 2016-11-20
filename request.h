@@ -38,7 +38,7 @@ signals:
 
 public slots:
 
-private:
+protected:
 
     QString locale;
     QString conversationId;

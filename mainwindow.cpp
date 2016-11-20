@@ -65,11 +65,13 @@ void MainWindow::getResponse(QString response){
 }
 
 void MainWindow::slotError(QNetworkReply::NetworkError error){
-    qDebug() <<"error no: "<<error;
+    qDebug() <<"Network error no: "<<error;
 }
 
 void MainWindow::slotSslErrors(QList<QSslError> errors){
-    for(int i=0; i<errors.size(); i++){
-        qDebug() <<errors.at(i).errorString();
+    QList<QSslError>::Iterator it = errors.begin();
+    for(; it != errors.end(); ++it){
+        qDebug() <<(*it).errorString();
     }
+
 }

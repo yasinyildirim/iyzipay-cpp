@@ -1,5 +1,5 @@
 #include "hashgenerator.h"
-
+#include <QDebug>
 
 HashGenerator::HashGenerator()
 {
@@ -11,12 +11,12 @@ QString HashGenerator::generateHash(const QString& apiKey, const QString& secret
     QCryptographicHash cryptoHash(QCryptographicHash::Sha1);
 
     QByteArray result;
-
-
+    qDebug()<<iyziRequest->toString();
     QString input(apiKey + randomString + secretKey + iyziRequest->toString());
-    cryptoHash.addData(input.toUtf8());
-    result = cryptoHash.result();
+    QByteArray byteInput = input.toAscii();
 
+    cryptoHash.addData(byteInput);
+    result = cryptoHash.result();  
     QString strResult(result.toBase64());
     return strResult;
 }

@@ -19,7 +19,6 @@
 #include <QSslConfiguration>
 #include <QSsl>
 #include "request.h"
-#include <QFile>
 
 class HttpClient : public QObject
 {
