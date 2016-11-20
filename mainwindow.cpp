@@ -13,9 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     options = new Options(this);
     options->setApiKey("your api key");
     options->setBaseUrl("https://sandbox-api.iyzipay.com");
-    options->setSecretKey("your secret key");
-    QByteArray apiscret = options->getSecretKey().toAscii();
-    qDebug() <<"api_secert =" <<apiscret;
+    options->setSecretKey("your api secret");
 
 
 }
