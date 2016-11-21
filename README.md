@@ -13,7 +13,7 @@ You can sign up for an iyzico account at https://iyzico.com
  - QJson 0.7 (libqjson 0.7.1 package on ubuntu) or greater
 
 ##3. Installation
-
+####3.1 Using qmake
 Firstly, create a build directory and cd into it:
 ```
    mkdir build
@@ -28,5 +28,10 @@ In order to build application run following command in terminal:
 ```
     make
 ```
+####3.2 Using Qt Creator IDE
+* Right click on "iyzipay-client.pro" file, select "Open with QT Creator".
+* Switch to "Poject mode" by clicking "Project" tab on left (or you can use ctrl + 5)
+* Set your Debug and Release build paths in "Poject mode" settings
+* Build and Run using IDE
 
 
