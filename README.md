@@ -14,14 +14,14 @@ You can sign up for an iyzico account at https://iyzico.com
 
 ##3. Installation
 ####3.1 Using qmake
-Firstly, create a build directory and cd into it:
+Firstly, create a build directory (which should not be inside the project directory) and cd into it:
 ```
    mkdir build
    cd build
 ```
 run qmake in order to generate Makefile:
 ```
-    qmake ../iyzipay-client.pro -r -spec linux-g++-64
+    qmake ..iyzipay-cpp/iyzipay-client.pro -r -spec linux-g++-64
 ```
 In order to build application run following command in terminal:
 
