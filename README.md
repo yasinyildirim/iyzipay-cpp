@@ -21,7 +21,7 @@ Firstly, create a build directory (which should not be inside the project direct
 ```
 run qmake in order to generate Makefile:
 ```
-    qmake ..iyzipay-cpp/iyzipay-client.pro -r -spec linux-g++-64
+    qmake ../iyzipay-cpp/iyzipay-client.pro -r -spec linux-g++-64
 ```
 In order to build application run following command in terminal:
 
