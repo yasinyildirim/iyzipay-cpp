@@ -32,6 +32,10 @@ In order to build application run following command in terminal:
 ```
     make
 ```
+Running application:
+```
+    ./iyzipay-client 
+```
 ####3.2 Using Qt Creator IDE
 * Right click on "iyzipay-client.pro" file, select "Open with QT Creator".
 * Switch to "Poject mode" by clicking "Project" tab on left (or you can use ctrl + 5)
