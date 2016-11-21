@@ -19,6 +19,10 @@ Firstly, create a build directory (which should not be inside the project direct
    mkdir build
    cd build
 ```
+create symbolic link to Certificates/ folder (The folder contains ssl certificates):
+```
+   ln -s ../iyzipay-cpp/Certificates
+```
 run qmake in order to generate Makefile:
 ```
     qmake ../iyzipay-cpp/iyzipay-client.pro -r -spec linux-g++-64
