@@ -10,7 +10,7 @@ You can sign up for an iyzico account at https://iyzico.com
  - Qt (core, gui and network modules) 4.8 or greater
  - qmake
  - GNU g++ compiler
- - QJson 0.7 (libqjson 0.7.1 package on ubuntu) or greater
+ - QJson 0.8 (libqjson 0.8.1 package on ubuntu) or greater
 
 ##3. Installation
 ####3.1 Using qmake
