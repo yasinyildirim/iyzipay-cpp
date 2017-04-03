@@ -1,19 +1,19 @@
 # iyzipay-c++
 This software provides unofficial C++ client for users of iyzipay API.
 More information about iyzipay API: https://www.iyzico.com/
-##1. Introduction
+## 1. Introduction
 
 You can sign up for an iyzico account at https://iyzico.com
 
-##2. Dependencies
+## 2. Dependencies
 
  - Qt (core, gui and network modules) 4.8 or greater
  - qmake
  - GNU g++ compiler
  - QJson 0.8 (libqjson 0.8.1 package on ubuntu) or greater
 
-##3. Installation
-####3.1 Using qmake
+## 3. Installation
+#### 3.1 Using qmake
 Firstly, create a build directory (which should not be inside the project directory) and cd into it:
 ```
    mkdir build
@@ -36,7 +36,7 @@ Running application:
 ```
     ./iyzipay-client 
 ```
-####3.2 Using Qt Creator IDE
+#### 3.2 Using Qt Creator IDE
 * Right click on "iyzipay-client.pro" file, select "Open with QT Creator".
 * Switch to "Poject mode" by clicking "Project" tab on left (or you can use ctrl + 5)
 * Set your Debug and Release build paths in "Poject mode" settings
